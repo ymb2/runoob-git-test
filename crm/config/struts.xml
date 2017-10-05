@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<constant name="struts.devMode" value="true"></constant>
+	<constant name="struts.ui.theme" value="simple"></constant>
+
+	<package name="common" namespace="/" extends="json-default">
+	
+		<interceptors>
+			<interceptor name="loginInterceptor" class="cn.ymb.crm.web.interceptor.LoginInterceptor"></interceptor>
+			<interceptor-stack name="crmStack">
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+
+				<interceptor-ref name="loginInterceptor">
+
+					<param name="excludeMethods">login,register</param>
+				</interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+	
+
+		<default-interceptor-ref name="crmStack"></default-interceptor-ref>
+		
+		<global-results>
+			<result name="nonLogin">/WEB-INF/pages/login.jsp</result>
+			<result name="error">/WEB-INF/pages/error.jsp</result>
+			<result name="input">/WEB-INF/pages/error.jsp</result>
+		</global-results>
+		
+
+	
+	
+
+		<action name="uiAction_*_*">
+			<result>/WEB-INF/pages/{1}/{2}.jsp</result>
+		</action>
+		
+		<action name="homeAction" class="cn.ymb.crm.web.action.HomeAction">
+			<result>/WEB-INF/pages/frame.jsp</result>
+		</action>
+		
+	</package>
+
+	<include file="struts/struts-staff.xml"></include>
+	<include file="struts/struts-post.xml"></include>
+	<include file="struts/struts-department.xml"></include>
+	<include file="struts/struts-coursetype.xml"></include>
+	<include file="struts/struts-class.xml"></include>
+	<include file="struts/struts-refer.xml"></include>
+	<include file="struts/struts-follow.xml"></include>
+	<include file="struts/struts-student.xml"></include>
+	<include file="struts/struts-station.xml"></include>
+	<include file="struts/struts-runoff.xml"></include>
+	<include file="struts/struts-graduate.xml"></include>
+	
+</struts>

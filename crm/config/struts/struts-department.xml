@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="dep" namespace="/department" extends="common">
+		<action name="departmentAction_*" class="cn.ymb.crm.department.web.action.DepartmentAction" method="{1}">
+			<result name="findAll">/WEB-INF/pages/department/listDepartment.jsp</result>
+			<result name="preAddOrEdit">/WEB-INF/pages/department/addOrEditDepartment.jsp</result>
+			<result name="addOrEdit" type="redirectAction">departmentAction_findAll</result>
+		</action>
+	</package>
+
+</struts>

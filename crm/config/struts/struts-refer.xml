@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="ref" namespace="/refer" extends="common">
+		<action name="referAction_*" class="cn.ymb.crm.refer.web.action.ReferAction" method="{1}">
+			<result name="findAll">/WEB-INF/pages/refer/listRefer.jsp</result>
+			<result name="preAddOrEdit">/WEB-INF/pages/refer/addOrEditRefer.jsp</result>
+			<result name="addOrEdit" type="redirectAction">referAction_findAll?status=${status}</result>
+			<result name="findById">/WEB-INF/pages/refer/queryRefer.jsp</result>
+			<result name="preAdd">/WEB-INF/pages/refer/addRefer.jsp</result>
+			<result name="add" type="redirectAction">referAction_findAll?status=1</result>
+			<result name="preEdit">/WEB-INF/pages/refer/editRefer.jsp</result>
+			<result name="edit" type="redirectAction">referAction_findAll?status=1</result>
+			<result name="preAddStudent">/WEB-INF/pages/refer/addStudent.jsp</result>
+			<result name="addStudent" type="chain">
+				 <param name="actionName">studentAction_preAddOrEdit</param>
+             	<param name="namespace">/student</param>
+			</result>
+		</action>
+	</package>
+
+</struts>

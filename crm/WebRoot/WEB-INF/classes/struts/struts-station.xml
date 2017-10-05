@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="stat" namespace="/station" extends="common">
+		<action name="stationAction_*" class="cn.ymb.crm.station.web.action.StationAction" method="{1}">
+			<result name="add" type="redirectAction">
+				<param name="namespace">/student</param>
+				<param name="actionName">studentAction_findById?studentId=${crmStudent.studentId}</param>
+			</result>
+			<result name="findAll">/WEB-INF/pages/station/listStation.jsp</result>
+			<result name="preEditStation">/WEB-INF/pages/station/editStation.jsp</result>
+		</action>
+	</package>
+
+</struts>

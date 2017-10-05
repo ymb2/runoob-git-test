@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<!-- 配置用户的 -->
+	<package name="cla" namespace="/classesm" extends="common">
+		<action name="classAction_*" class="cn.ymb.crm.classesm.web.action.ClassAction" method="{1}">
+			<result name="findAll">/WEB-INF/pages/classesm/listClass.jsp</result>
+			<result name="preAddOrEdit">/WEB-INF/pages/classesm/addOrEditClass.jsp</result>
+			<result name="addOrEdit" type="redirectAction">classAction_findAll</result>
+			<result name="findById">/WEB-INF/pages/classesm/viewClass.jsp</result>
+			<result name="ajaxGetClass" type="json">
+				<param name="root">allClass</param>
+				<param name="includeProperties">
+					\[\d\]\.classId,
+					\[\d\]\.name
+				</param>
+			</result>
+			<result name="preUpload">/WEB-INF/pages/classesm/uploadClass.jsp</result>
+			<result name="upload" type="redirectAction">classAction_findAll</result>
+			<result name="download" type="stream">
+				<param name="inputName">target</param>
+				<param name="contentDisposition">attachment;filename=${downloadFileName}</param>
+			</result>
+		</action>
+	</package>
+
+</struts>

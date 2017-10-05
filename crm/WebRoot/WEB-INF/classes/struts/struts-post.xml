@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+
+	<package name="pos" namespace="/post" extends="common">
+		<action name="postAction_*" class="cn.ymb.crm.post.web.action.PostAction" method="{1}">
+
+			<result name="ajaxGetPostion" type="json">
+
+				<param name="root">allPost</param>
+				<param name="includeProperties">
+					\[\d\]\.postId,
+					\[\d\]\.postName
+				</param>
+			</result>
+			<result name="findAll">/WEB-INF/pages/post/listPost.jsp</result>
+			<result name="preAddOrEdit">/WEB-INF/pages/post/addOrEditPost.jsp</result>
+			<result name="addOrEdit" type="redirectAction">postAction_findAll</result>
+		</action>
+	</package>
+</struts>
